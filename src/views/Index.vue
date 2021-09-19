@@ -13,8 +13,6 @@
         :default-active="$route.path"
         exact
         class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
         :background-color="themeColor"
         text-color="#fff"
         active-text-color="#ffd04b"
@@ -35,7 +33,7 @@
             <span>客房管理</span>
           </template>
           <el-menu-item index="/kefang">客房管理</el-menu-item>
-          <el-menu-item index="2-2">类型管理</el-menu-item>
+          <el-menu-item index="/class">类型管理</el-menu-item>
         </el-submenu>
         <el-submenu index="3">
           <template slot="title">
@@ -64,9 +62,9 @@
           <!-- 面包屑导航 -->
           <el-breadcrumb separator-class="el-icon-arrow-right">
             <el-breadcrumb-item
-              :to="item.path"
               v-for="(item, index) in list"
               :key="index"
+              :to="item.path"
               >{{ item.meta.title }}</el-breadcrumb-item
             >
           </el-breadcrumb>
@@ -134,13 +132,10 @@ export default {
     },
   },
   methods: {
-    handleOpen(key, keyPath) {
-      // console.log(key, keyPath);
-      this.$router.push(key);
-    },
-    handleClose(key, keyPath) {
-      // console.log(key, keyPath);
-    },
+    // handleOpen(key, keyPath) {
+    //   this.$router.push(key);
+    // },
+
     changeTheme(color) {
       // 设置主题颜色并且使用localStorage.setItem保存到浏览器缓存中
       this.themeColor = color;
